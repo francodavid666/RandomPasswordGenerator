@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <title>Random Password Generator</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="text">
+            Random Password Generator <br>in HTML CSS & Javascript
+        </div>
+        <div class="input-data">
+            <div class="display">
+                <input type="text">
+                <span class="far fa-copy" onclick="copy()"></span>
+                <span class="fas fa-copy"onclick="copy()"></span>
+            </div>
+            <button>Genertor Password</button>
+        </div>
+    </div>
+
+    <script>
+            const display = document.querySelector('input'),
+             button = document.querySelector('button'),
+             copyBtn = document.querySelector('span.far'),
+             copyActive = document.querySelector('span.fas');
+             //display = document.querySelector('input');
+
+            let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=";
+
+
+            button.onclick=()=>{
+                
+                let i,
+                randomPassword = '';
+                for(i = 0; i < 16; i++){
+
+                    copyBtn.style.display = 'none' 
+                    copyActive.style.display = 'block' 
+                    randomPassword = randomPassword + chars.charAt(
+                        Math.floor(Math.random() * chars.length)
+                    );
+                }
+                display.value = randomPassword;
+            }
+            function copy(){
+                copyBtn.style.display = 'block' 
+                copyActive.style.display = 'none' 
+                display.select();
+                document.execCommand('copy');
+            }
+    </script>
+</body>
+</html>
